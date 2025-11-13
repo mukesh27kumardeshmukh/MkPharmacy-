@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK Pharmacy - Science & Health Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: white;
+            color: #1f2937;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-section img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .logo-placeholder {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-telegram {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-telegram:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-youtube {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-youtube:hover {
+            background: #b91c1c;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #c7d2fe;
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            min-width: 250px;
+        }
+
+        .btn-hero-white {
+            background: white;
+            color: #4f46e5;
+        }
+
+        .btn-hero-white:hover {
+            background: #eef2ff;
+        }
+
+        .btn-hero-red {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-hero-red:hover {
+            background: #b91c1c;
+        }
+
+        /* Stats */
+        .stats {
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 2rem 1rem;
+        }
+
+        .stats-container {
+            max-width: 1152px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .category-card:hover {
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .icon-blue { background: #dbeafe; color: #2563eb; }
+        .icon-green { background: #d1fae5; color: #059669; }
+        .icon-purple { background: #e9d5ff; color: #9333ea; }
+        .icon-orange { background: #fed7aa; color: #ea580c; }
+
+        .category-card h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .category-card p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Content Cards */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .content-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .content-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .content-card p {
+            color: #6b7280;
+            line-height: 1.625;
+        }
+
+        /* Why Choose */
+        .why-choose {
+            background: linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%);
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+        .why-item .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-item p {
+            color: #6b7280;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: #4f46e5;
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .cta h3 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: #c7d2fe;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-icons a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+
+        .footer-icons a:hover {
+            color: white;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 640px) {
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-buttons .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="/images /k.jpg"MK Pharmacy Logo">
+                <div class="logo-text">
+                    <h1>MK Pharmacy</h1>
+                    <p>Science & Health</p>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a href="https://t.me/Mk_Pharmacy" target="_blank" class="btn btn-telegram">
+                    <span>📱</span> Telegram
+                </a>
+                <a href="https://youtube.com/@mk_pharmacy?si=KH9y8SDeaTYyeDeQ" target="_blank" class="btn btn-youtube">
+                    <span>▶️</span> YouTube
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <h2>MK Pharmacy में आपका स्वागत है</h2>
+            <p>विज्ञान, स्वास्थ्य और शिक्षा की सरल और विश्वसनीय जानकारी</p>
+            <div class="hero-buttons">
+                <a href="https://t.me/Mk_Pharmacy" target="_blank" class="btn-hero btn-hero-white">
+                    <span>📱</span> Telegram ज्वाइन करें
+                </a>
+                <a href="https://youtube.com/@mk_pharmacy?si=KH9y8SDeaTYyeDeQ" target="_blank" class="btn-hero btn-hero-red">
+                    <span>▶️</span> YouTube सब्सक्राइब करें
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-container">
+            <div>
+                <div class="stat-value">100K+</div>
+                <div class="stat-label">सब्सक्राइबर्स</div>
+            </div>
+            <div>
+                <div class="stat-value">500+</div>
+                <div class="stat-label">वीडियोज</div>
+            </div>
+            <div>
+                <div class="stat-value">100%</div>
+                <div class="stat-label">फ्री कंटेंट</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content">
+        <!-- Categories -->
+        <h3 class="section-title">हमारी विशेषताएं</h3>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon icon-blue">🔬</div>
+                <h4>विज्ञान</h4>
+                <p>रोचक तथ्य</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon icon-green">💊</div>
+                <h4>स्वास्थ्य</h4>
+                <p>दवा जानकारी</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon icon-purple">🧬</div>
+                <h4>जीव विज्ञान</h4>
+                <p>कॉन्सेप्ट्स</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon icon-orange">📚</div>
+                <h4>शिक्षा</h4>
+                <p>उपयोगी ज्ञान</p>
+            </div>
+        </div>
+
+        <!-- Content Cards -->
+        <h3 class="section-title">हम क्या प्रदान करते हैं</h3>
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="emoji">🔬</div>
+                <h4>विज्ञान की रोचक जानकारियाँ</h4>
+                <p>Science की दुनिया में डूबिए और सीखिए रोचक तथ्य और महत्वपूर्ण जानकारियाँ</p>
+            </div>
+            <div class="content-card">
+                <div class="emoji">💊</div>
+                <h4>दवा और स्वास्थ्य</h4>
+                <p>दवाओं और हेल्थ से जुड़ी आसान और समझने योग्य जानकारी प्राप्त करें</p>
+            </div>
+            <div class="content-card">
+                <div class="emoji">🧬</div>
+                <h4>Biology कॉन्सेप्ट्स</h4>
+                <p>जीव विज्ञान के शानदार कॉन्सेप्ट्स और एक्सप्लेनर वीडियोज देखें</p>
+            </div>
+            <div class="content-card">
+                <div class="emoji">📚</div>
+                <h4>शिक्षा और ज्ञान</h4>
+                <p>सीखने से संबंधित उपयोगी ज्ञान और शैक्षिक सामग्री</p>
+            </div>
+        </div>
+
+        <!-- Why Choose -->
+        <div class="why-choose">
+            <h3 class="section-title">क्यों चुनें MK Pharmacy?</h3>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="emoji">✅</div>
+                    <h4>विश्वसनीय जानकारी</h4>
+                    <p>प्रामाणिक और सत्यापित सामग्री</p>
+                </div>
+                <div class="why-item">
+                    <div class="emoji">🎯</div>
+                    <h4>आसान भाषा</h4>
+                    <p>सरल हिंदी में समझाया गया</p>
+                </div>
+                <div class="why-item">
+                    <div class="emoji">📱</div>
+                    <h4>नियमित अपडेट</h4>
+                    <p>रोज़ाना नई जानकारी</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-container">
+            <h3>आज ही जुड़िए हमारे साथ</h3>
+            <p>Telegram और YouTube पर हमें फॉलो करें</p>
+            <div class="cta-buttons">
+                <a href="https://t.me/Mk_Pharmacy" target="_blank" class="btn-hero btn-hero-white">
+                    <span>📱</span> @Mk_Pharmacy
+                </a>
+                <a href="https://youtube.com/@mk_pharmacy?si=KH9y8SDeaTYyeDeQ" target="_blank" class="btn-hero btn-hero-red">
+                    <span>▶️</span> MK Pharmacy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-icons">
+                <a href="https://t.me/Mk_Pharmacy" target="_blank">📱</a>
+                <a href="https://youtube.com/@mk_pharmacy?si=KH9y8SDeaTYyeDeQ" target="_blank">▶️</a>
+            </div>
+            <p>© 2024 MK Pharmacy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+  </html>
